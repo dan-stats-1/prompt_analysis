@@ -29,4 +29,4 @@ jobs:
     - name: Mypy
       run: python -m mypy .
     - name: Bandit
-      run: python -m bandit -r -x tests/ .
+      run: python -m bandit .

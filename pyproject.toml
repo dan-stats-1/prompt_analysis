@@ -1,5 +1,5 @@
 [tool.bandit]
-exclude_dirs = ["tests", ".venv", "local_ci_run.py"]
+exclude_dirs = ["tests", ".venv"]
 
 [[tool.mypy.overrides]]
 module = ["nltk.*"]
