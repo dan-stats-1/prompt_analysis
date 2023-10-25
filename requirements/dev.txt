@@ -1,5 +1,6 @@
 -r prod.txt
 
+bandit
 mypy
 pytest
 ruff

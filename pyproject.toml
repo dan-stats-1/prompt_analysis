@@ -1,0 +1,6 @@
+[tool.bandit]
+exclude_dirs = ["tests", ".venv", "local_ci_run.py"]
+
+[[tool.mypy.overrides]]
+module = ["nltk.*"]
+ignore_missing_imports = true
