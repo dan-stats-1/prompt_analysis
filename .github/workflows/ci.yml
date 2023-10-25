@@ -20,12 +20,14 @@ jobs:
         python -m pip install -r requirements/dev.txt
 
   test:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Pytest
       run: python -m pytest tests/
 
   quality:
+    needs: build
     runs-on: ubuntu-latest
     steps:
     - name: Ruff
