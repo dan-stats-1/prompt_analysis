@@ -1,0 +1,7 @@
+jupyterlab
+nltk
+matplotlib
+polars
+seaborn
+selenium
+wordcloud
