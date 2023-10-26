@@ -14,10 +14,10 @@ def word_sentiment_counter(prompt: str) -> int:
     return num_negative_words
 
 
-def transform_data(df: pl.DataFrame) -> pl.DataFrame:
+def transform_data(df: pl.DataFrame, label: int) -> pl.DataFrame:
     df = df.with_columns(
-        pl.lit(0).alias("label"),
-        pl.col("prompt").map_elements(word_sentiment_counter).alias("num_negative_words")
+        pl.lit(label).cast(pl.Int16).alias("label"),
+        pl.col("prompt").map_elements(word_sentiment_counter).cast(pl.Int16).alias("num_negative_words")
     )
 
     return df
@@ -29,8 +29,8 @@ senitment_analyser = SentimentIntensityAnalyzer()
 chatgpt = pl.read_csv("data/chatgpt_prompts.csv", columns=["prompt"])
 jailbreak = pl.read_csv("data/jailbreak_prompts.csv", columns=["prompt"])
 
-chatgpt = transform_data(chatgpt)
-jailbreak = transform_data(jailbreak)
+chatgpt = transform_data(chatgpt, 0)
+jailbreak = transform_data(jailbreak, 1)
 
 all_prompts = pl.concat([chatgpt, jailbreak])
 
