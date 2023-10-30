@@ -3,3 +3,4 @@ notes.txt
 .venv/
 **/__pycache__
 *_cache
+renv/
