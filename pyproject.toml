@@ -2,5 +2,5 @@
 exclude_dirs = ["tests", ".venv"]
 
 [[tool.mypy.overrides]]
-module = ["nltk.*"]
+module = ["nltk.*", "scipy.*", "statsmodels.*"]
 ignore_missing_imports = true

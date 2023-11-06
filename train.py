@@ -20,15 +20,17 @@ blocking_threshold = (
     train.filter(pl.col("label") == 0)
     .select("p_value")
     .sort("p_value", descending=True)
-    .row(BLOCKING_FPS)
+    .row(BLOCKING_FPS)[0]
 )
 
 analyst_threshold = (
     train.filter(pl.col("label") == 0)
     .select("p_value")
     .sort("p_value", descending=True)
-    .row(ANALYST_FPS)
+    .row(ANALYST_FPS)[0]
 )
+
+print(analyst_threshold)
 
 detector.update_thresholds(block_thresh=blocking_threshold, analyst_thresh=analyst_threshold)
 
