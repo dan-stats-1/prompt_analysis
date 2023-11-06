@@ -4,7 +4,7 @@ from model import JailbreakDetector
 
 TRAIN = "data/prompts_with_sentiment.csv"
 BLOCKING_FPS = 0
-ANALYST_FPS = 100
+ANALYST_FPS = 1
 
 train = pl.read_csv(TRAIN)
 
@@ -29,8 +29,6 @@ analyst_threshold = (
     .sort("p_value", descending=True)
     .row(ANALYST_FPS)[0]
 )
-
-print(analyst_threshold)
 
 detector.update_thresholds(block_thresh=blocking_threshold, analyst_thresh=analyst_threshold)
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <input type="text" id="textbox" /> 
+        <button id="submit">Submit</button>
+        <script>
+            // Get the textbox and button
+            const textbox = document.getElementById('textbox');
+            const submitBtn = document.getElementById('submit');
+
+            // Add click event to button
+            submitBtn.addEventListener('click', () => {
+
+            // Get value from textbox 
+            const text = textbox.value;
+            
+            // Send data to backend
+            fetch('127.0.0.1:8000/classify', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({text})
+            })
+            .then(response => {
+                // Handle response 
+            });
+
+            });
+        </script>
+    </body>
+</html>

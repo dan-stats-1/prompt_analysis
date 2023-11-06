@@ -1,3 +1,4 @@
+fastapi
 jupyterlab
 nltk
 matplotlib
@@ -5,4 +6,5 @@ polars
 seaborn
 selenium
 statsmodels
+uvicorn[standard]
 wordcloud
